@@ -217,7 +217,7 @@
       <button class="primary" id="startBtn">Start the quiz</button>
 
       <div class="notice">
-        This quiz is proctored. Copying, pasting and right-click are disabled on this page, and leaving the tab is logged. Please complete it on your own, without external help.
+        This quiz is proctored. Copying, pasting and right-click are disabled on this page, and screenshots of this page are automatically detected and flagged. Please complete it on your own, without external help.
       </div>
     </section>
 
@@ -272,7 +272,7 @@
   const EMAILJS_SERVICE_ID  = "IAEAIX";
   const EMAILJS_TEMPLATE_ID = "template_4rrmxop";
   const TEACHER_EMAIL       = "matteo.arroyo@iae-aix.com";
-  const COURSE_LABEL        = "Course Quiz"; // edit to your course name
+  const COURSE_LABEL        = "Digital Marketing, AI & Influence \u2014 M2"; // edit to your course name
 
   document.getElementById("courseLabel").textContent = COURSE_LABEL;
 
@@ -288,33 +288,899 @@
      "slider" (numeric answer with tolerance).
      ============================================================ */
   const QUESTIONS = [
-    { type: "mcq", question: "Which of the following best defines 'opportunity cost'?",
-      options: [
-        "The monetary cost of producing a good",
-        "The value of the next best alternative given up",
-        "The total revenue minus total cost",
-        "The interest rate charged by a bank"
-      ], correctIndex: 1 },
-    { type: "tf", question: "A SWOT analysis examines Strengths, Weaknesses, Opportunities and Threats.", correct: true },
-    { type: "mcq", question: "In Porter's Five Forces framework, which force refers to the bargaining power of suppliers?",
-      options: ["Threat of new entrants", "Bargaining power of suppliers", "Threat of substitutes", "Industry rivalry"],
-      correctIndex: 1 },
-    { type: "slider", question: "According to the standard rule of thumb, what percentage of revenue is often reinvested in R&D by tech-intensive firms? (select the closest value)",
-      min: 0, max: 30, step: 1, correct: 10, tolerance: 3, unit: "%" },
-    { type: "tf", question: "Return on Investment (ROI) is calculated as Net Profit divided by Revenue.", correct: false },
-    { type: "mcq", question: "Which leadership style is characterised by high involvement of employees in decision-making?",
-      options: ["Autocratic", "Laissez-faire", "Democratic / participative", "Transactional"], correctIndex: 2 },
-    { type: "mcq", question: "What does 'B2B' stand for?",
-      options: ["Business to Business", "Brand to Buyer", "Back to Basics", "Business to Bank"], correctIndex: 0 },
-    { type: "tf", question: "Market segmentation means treating the entire market as a single homogeneous group.", correct: false },
-    { type: "slider", question: "In a typical break-even analysis exercise, if fixed costs are 10,000€ and contribution margin per unit is 25€, how many units must be sold to break even?",
-      min: 0, max: 1000, step: 10, correct: 400, tolerance: 20 },
-    { type: "mcq", question: "Which financial statement shows a company's assets, liabilities and equity at a specific point in time?",
-      options: ["Income statement", "Balance sheet", "Cash flow statement", "Statement of retained earnings"], correctIndex: 1 },
-    { type: "tf", question: "In agile project management, a 'sprint' typically lasts several months.", correct: false },
-    { type: "mcq", question: "Which pricing strategy involves setting a high price initially, then lowering it over time?",
-      options: ["Penetration pricing", "Price skimming", "Cost-plus pricing", "Loss leader pricing"], correctIndex: 1 }
-  ];
+  {
+    "type": "mcq",
+    "question": "According to the course, what does “phygital” refer to?",
+    "options": [
+      "A phishing scam targeting digital ads",
+      "The alliance of physical and digital experiences",
+      "A pricing strategy for physical goods",
+      "A type of physical server infrastructure"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "What are the three challenges of online sales listed in the course?",
+    "options": [
+      "Acquisition, Conversion, Repetition",
+      "Branding, Pricing, Distribution",
+      "SEO, SEA, Social Media",
+      "Traffic, Content, Design"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "type": "mcq",
+    "question": "Which of the following is classified as “Natural” traffic in the course's traffic framework?",
+    "options": [
+      "Google Ads (SEA)",
+      "SEO and organic social media",
+      "Newsletter emailing",
+      "Public relations"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "Which channel is described as “Not free” (paid) traffic in the course?",
+    "options": [
+      "SEO",
+      "Influence / product placement",
+      "SEA (Search Engine Advertising)",
+      "Organic social media posts"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "type": "mcq",
+    "question": "What does SEA stand for in the course?",
+    "options": [
+      "Search Engine Advertising",
+      "Social Engagement Analytics",
+      "Search Engine Architecture",
+      "Sales Enablement Automation"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "type": "mcq",
+    "question": "Which factor is NOT listed among the elements determining SEO ranking position?",
+    "options": [
+      "Technical site quality (tags, titles, load speed)",
+      "Quality and quantity of inbound links",
+      "Quality of content",
+      "Size of the paid advertising budget"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "type": "mcq",
+    "question": "According to the acquisition mix comparison, which channel is described as inexpensive but slow to set up (at least 6 months before first effects)?",
+    "options": [
+      "SEA",
+      "SEO",
+      "Display advertising",
+      "Affiliate marketing"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "What is RFM analysis used for in the course?",
+    "options": [
+      "Measuring website load speed",
+      "Analyzing a contact database using Recency, Frequency, and Amount",
+      "Calculating SEO keyword density",
+      "Testing ad creative variants"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "What does LTV stand for in the digital marketing course?",
+    "options": [
+      "Lead Traffic Value",
+      "Life Time Value",
+      "Local Targeting Volume",
+      "Loyalty Tier Valuation"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "What is ROAS and how is it typically expressed?",
+    "options": [
+      "Return On Ad Spend, expressed as a multiple like x3 or x5",
+      "Rate Of Average Sales, expressed in units sold",
+      "Reach Over Ad Spend, expressed in impressions",
+      "Revenue Over Acquisition Sessions, expressed as a percentage only"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "type": "mcq",
+    "question": "Which of these is an example of “omnichannel / phygital” coordination mentioned in the course?",
+    "options": [
+      "Buying Google Ads keywords",
+      "In-store delivery and return via shop",
+      "Posting on Instagram daily",
+      "Running an A/B test on email subject lines"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "In the “customer journey of a lead generation website” described in the course, what does the funnel primarily lead to?",
+    "options": [
+      "Cart, Delivery, Payment",
+      "Form completion leading to prospect data (name, email, request)",
+      "Category page, Subcategory page, Product page",
+      "Authentication, Cart, Checkout"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "Which social media platform does the course describe as primarily “BtoB, a target for decision-makers”?",
+    "options": [
+      "Instagram",
+      "TikTok",
+      "LinkedIn",
+      "Snapchat"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "type": "mcq",
+    "question": "According to the course, what proportion of perceived e-commerce quality is attributed to delivery speed and quality?",
+    "options": [
+      "10%",
+      "25%",
+      "50%",
+      "75%"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "type": "tf",
+    "question": "According to the course, a satisfactory website bounce rate should generally be below 50%.",
+    "correct": true
+  },
+  {
+    "type": "tf",
+    "question": "The course states that SEA (paid search) is generally slower to set up than SEO.",
+    "correct": false
+  },
+  {
+    "type": "tf",
+    "question": "According to the course, Revenue is approximately equal to traffic multiplied by conversion rate multiplied by average basket.",
+    "correct": true
+  },
+  {
+    "type": "tf",
+    "question": "The course recommends building complex, over-engineered loyalty programs (“gas plants”) to maximize customer retention.",
+    "correct": false
+  },
+  {
+    "type": "tf",
+    "question": "According to the course, the number of unique visitors is referred to as “Sessions” in Google Analytics 4.",
+    "correct": false
+  },
+  {
+    "type": "tf",
+    "question": "The course lists “Cookieless” and “SGE (Search Generative Experience)” as examples of evolving technology and regulatory issues affecting digital business.",
+    "correct": true
+  },
+  {
+    "type": "tf",
+    "question": "According to the course, a typical satisfactory conversion rate for a website is around 30%.",
+    "correct": false
+  },
+  {
+    "type": "tf",
+    "question": "The course's team project requires groups of 6 students, each taking on a distinct marketing role.",
+    "correct": true
+  },
+  {
+    "type": "slider",
+    "question": "According to the “Digital Barometer” statistic cited in the course, how many hours per day does the average person spend in front of a screen?",
+    "min": 0,
+    "max": 12,
+    "step": 0.5,
+    "correct": 4.6,
+    "tolerance": 0.5
+  },
+  {
+    "type": "slider",
+    "question": "According to the course, a satisfactory e-commerce conversion rate is typically around what percentage?",
+    "min": 0,
+    "max": 20,
+    "step": 1,
+    "correct": 3,
+    "tolerance": 1,
+    "unit": "%"
+  },
+  {
+    "type": "slider",
+    "question": "According to the course, how many months does SEO typically take before showing its first effects?",
+    "min": 0,
+    "max": 24,
+    "step": 1,
+    "correct": 6,
+    "tolerance": 1,
+    "unit": " months"
+  },
+  {
+    "type": "slider",
+    "question": "Repeater rate = customers making more than one purchase / total customers. If a store has 500 total customers and 150 repeat customers, what is the repeater rate?",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "correct": 30,
+    "tolerance": 3,
+    "unit": "%"
+  },
+  {
+    "type": "slider",
+    "question": "Using the course's ROAS formula, if you spend 1,000€ (excl. VAT) on acquisition and generate 5,000€ of tracked revenue, what is the ROAS (as a multiple)?",
+    "min": 0,
+    "max": 20,
+    "step": 1,
+    "correct": 5,
+    "tolerance": 1,
+    "unit": "x"
+  },
+  {
+    "type": "slider",
+    "question": "If a webpage receives 2,000 sessions and records 60 conversions, what is the conversion rate (conversions / sessions)?",
+    "min": 0,
+    "max": 20,
+    "step": 1,
+    "correct": 3,
+    "tolerance": 1,
+    "unit": "%"
+  },
+  {
+    "type": "mcq",
+    "question": "According to the course, what are the three waves of AI marketing evolution?",
+    "options": [
+      "Discovery, Growth, Maturity",
+      "The Tipping Point, Autonomy, The Invisible Era",
+      "Automation, Personalization, Regulation",
+      "Creation, Distribution, Measurement"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "What is the “Golden Rule of AI in Production” according to the course?",
+    "options": [
+      "AI must never be used in client work",
+      "AI is the brief, not the result — a human must touch the final output",
+      "AI should replace all human creatives by 2027",
+      "Only synthetic influencers should be used for advertising"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "In the Les Nouveaux Ateliers case study, which platform was used to source human freelance talent?",
+    "options": [
+      "Fiverr",
+      "Malt",
+      "LinkedIn",
+      "Upwork"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "What is “Zero-Party Data” according to the course?",
+    "options": [
+      "Data harvested via third-party cookies without consent",
+      "Data transmitted intentionally and proactively by the customer (e.g. via quizzes, configurators)",
+      "Anonymous data with zero identifying information",
+      "Data collected exclusively through Google Analytics"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "What does AEO stand for in the course?",
+    "options": [
+      "Answer Engine Optimization",
+      "Automated Email Outreach",
+      "Ad Efficiency Optimization",
+      "Audience Engagement Objective"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "type": "mcq",
+    "question": "Which of these is listed as one of the two AEO strategies in the course?",
+    "options": [
+      "Structured Data (Schema.org markup)",
+      "Increasing paid ad spend only",
+      "Buying backlinks from any source",
+      "Reducing page load speed"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "type": "mcq",
+    "question": "According to the course, what happened to the “linear funnel” (AIDA model)?",
+    "options": [
+      "It became even more dominant with AI",
+      "It collapsed, replaced by a chaotic ‘Messy Middle’ customer journey",
+      "It was replaced entirely by email marketing",
+      "It merged with the RFM model"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "What does the course say about micro- and nano-influencers compared to mega-celebrity endorsements?",
+    "options": [
+      "They drive 3x to 5x higher engagement rates",
+      "They are being phased out entirely",
+      "They cost more than celebrity endorsements",
+      "They have no measurable impact on purchase decisions"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "type": "mcq",
+    "question": "According to the course's case study on restaurant AI-generated imagery, what was a key consumer reaction?",
+    "options": [
+      "Increased trust in the restaurant's authenticity",
+      "Complete indifference to the images",
+      "Backlash, with declining Google review scores after AI-generated food photos were used",
+      "Immediate adoption by all competitors"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "type": "mcq",
+    "question": "What is the “AI Concierge” described as in the course?",
+    "options": [
+      "A customer service chatbot only",
+      "An ultimate gatekeeper blocking most traditional advertising noise and only allowing ‘whitelisted’ trusted brands through",
+      "A physical robot assistant in retail stores",
+      "A tool exclusively for luxury brands"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "According to the course, what is “A2A Marketing”?",
+    "options": [
+      "Marketing that targets a person's Personal AI Assistant rather than the human directly",
+      "Advertising exclusively through affiliate networks",
+      "App-to-App marketing between two mobile applications",
+      "A method of measuring ad-to-audience ratios"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "type": "mcq",
+    "question": "What does the course identify as the “B2Robot” standard requirement for brands?",
+    "options": [
+      "Flashy visual branding above all else",
+      "Flawless, structured product data feeds and blockchain-anchored verifiable reputation",
+      "Exclusively human customer service",
+      "Avoiding any digital presence"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "According to the course, what is the “B2A Market”?",
+    "options": [
+      "Business-to-Association marketing",
+      "Business-to-AI: selling tools and data feeds designed for other AI systems",
+      "Business-to-Analyst reporting services",
+      "Business-to-Advertiser bidding platforms"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "What does the course say about “Synthetic Consumer Panels”?",
+    "options": [
+      "They are illegal in the EU",
+      "They are AI personas that can test concepts against 1,000 simulated ‘clients’ in about 10 minutes",
+      "They replace all human focus groups permanently and are banned from marketing use",
+      "They are the same thing as A/B testing"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "According to the course's case study, who resigned from Anthropic and issued a public warning about AI risk?",
+    "options": [
+      "Dario Amodei",
+      "Jacob Coxon",
+      "Sam Altman",
+      "Sundar Pichai"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "Who is identified in the course as the CEO of Anthropic responding to concerns about the AI arms race?",
+    "options": [
+      "Jacob Coxon",
+      "Elon Musk",
+      "Dario Amodei",
+      "Satya Nadella"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "type": "mcq",
+    "question": "What does the course say about “Digital Twins” of talent (e.g. models, athletes)?",
+    "options": [
+      "They are banned under EU law",
+      "Their likeness is registered and licensed, enabling infinite reusability without new photoshoots",
+      "They can only be used once per contract",
+      "They eliminate the need for any consent frameworks"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "tf",
+    "question": "According to the course, 62% of global CMOs use Generative AI daily in production (McKinsey, 2025).",
+    "correct": true
+  },
+  {
+    "type": "tf",
+    "question": "The course states that AI-generated content should always be the final, client-facing product without human review.",
+    "correct": false
+  },
+  {
+    "type": "tf",
+    "question": "According to the course, about 80% of users actively refuse intrusive ad tracking when given a clear choice.",
+    "correct": true
+  },
+  {
+    "type": "tf",
+    "question": "The course claims detection tools for AI-altered appearance are structurally always one step ahead of generation tools.",
+    "correct": false
+  },
+  {
+    "type": "tf",
+    "question": "According to the course, employees are roughly 8 times more trusted than a brand's own logo or channel.",
+    "correct": true
+  },
+  {
+    "type": "tf",
+    "question": "The course states that conversational commerce has led to a 40% drop in re-purchase rates.",
+    "correct": false
+  },
+  {
+    "type": "tf",
+    "question": "According to the course, CSRD regulations require documented proof for ecological claims made by brands in Europe.",
+    "correct": true
+  },
+  {
+    "type": "tf",
+    "question": "The course states that AI is expected to fully replace the human “identity layer” of taste, surprise, and emotion by 2030.",
+    "correct": false
+  },
+  {
+    "type": "tf",
+    "question": "According to the course, roughly 50% of Gen Z searches now begin with an image or video (2026 industry estimates).",
+    "correct": true
+  },
+  {
+    "type": "tf",
+    "question": "The course states that 65% of Google searches now end without a click (zero-click search).",
+    "correct": true
+  },
+  {
+    "type": "slider",
+    "question": "According to the course (HubSpot, 2026), how many hours per week does the average marketer save using AI tools?",
+    "min": 0,
+    "max": 40,
+    "step": 0.5,
+    "correct": 10.7,
+    "tolerance": 1.5
+  },
+  {
+    "type": "slider",
+    "question": "According to the course (Adobe, 2026), what is the average production cost reduction across creative formats due to AI?",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "correct": 42,
+    "tolerance": 5,
+    "unit": "%"
+  },
+  {
+    "type": "slider",
+    "question": "According to the course, roughly how many billion consumers interact with AI-mediated purchase journeys daily?",
+    "min": 0,
+    "max": 10,
+    "step": 0.5,
+    "correct": 2,
+    "tolerance": 0.5,
+    "unit": "B"
+  },
+  {
+    "type": "slider",
+    "question": "According to the course, generative video hyper-personalization delivers how many times higher Click-Through Rates compared to generic video creative?",
+    "min": 0,
+    "max": 20,
+    "step": 1,
+    "correct": 10,
+    "tolerance": 2,
+    "unit": "x"
+  },
+  {
+    "type": "slider",
+    "question": "According to the course, what average percentage gain in creative efficiency and time-to-market is associated with generative AI adoption?",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "correct": 25,
+    "tolerance": 5,
+    "unit": "%"
+  },
+  {
+    "type": "slider",
+    "question": "According to the course, the AI Concierge natively blocks roughly what percentage of traditional advertising noise?",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "correct": 99,
+    "tolerance": 2,
+    "unit": "%"
+  },
+  {
+    "type": "mcq",
+    "question": "According to the report, what is the projected global social commerce market value by 2031?",
+    "options": [
+      "$2.11 trillion",
+      "$7.55 trillion",
+      "$23.4 billion",
+      "$500 million"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "Which company's Shop is projected to reach $23.4B in 2026 US ecommerce sales, according to the report?",
+    "options": [
+      "Instagram Shop",
+      "TikTok Shop",
+      "Pinterest Shop",
+      "YouTube Shop"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "According to the report, how do live shopping conversion rates compare to standard ecommerce checkout?",
+    "options": [
+      "Live shopping converts lower, at 1-2%",
+      "Live shopping converts at 8-12%, versus 2-4% for standard ecommerce",
+      "They convert at exactly the same rate",
+      "Live shopping has no measurable conversion rate"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "What happened to OpenAI's in-chat “Instant Checkout” feature, according to the report?",
+    "options": [
+      "It became the default checkout on all AI platforms",
+      "It was launched in late 2025 with Etsy and Shopify, then quietly retired in March 2026 due to compliance issues",
+      "It was never launched",
+      "It replaced Amazon's checkout system entirely"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "According to the report, how did Amazon respond to AI shopping agents like ChatGPT?",
+    "options": [
+      "Amazon fully integrated with OpenAI for seamless shopping",
+      "Amazon updated robots.txt to block OpenAI's crawlers and sued Perplexity over unauthorized agent purchases",
+      "Amazon shut down its own website",
+      "Amazon gave away its product catalog for free to all AI companies"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "According to the report's case study, roughly how much did TikTok Shop US record in sales over the Black Friday weekend?",
+    "options": [
+      "$5 million",
+      "$75 million",
+      "$500 million",
+      "$5 billion"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "type": "mcq",
+    "question": "What does the report identify as the main reason AI shopping agents might treat a retailer as “invisible”?",
+    "options": [
+      "The retailer's logo is not colorful enough",
+      "The retailer lacks structured, machine-readable product data (e.g. JSON-LD, schema markup)",
+      "The retailer has too many five-star reviews",
+      "The retailer only accepts credit cards"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "According to the report, what is “Agent Commerce Optimization”?",
+    "options": [
+      "A new baseline hygiene of making product data readable by AI shopping agents, similar to SEO for search engines",
+      "A method for optimizing warehouse robots",
+      "A legal framework for banning AI agents from retail",
+      "A synonym for influencer marketing"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "type": "mcq",
+    "question": "Who created the synthetic influencer Aitana López, according to the report?",
+    "options": [
+      "A Barcelona agency called The Clueless, as a response to rising human influencer costs",
+      "A US-based Fortune 500 tech company",
+      "Magazine Luiza's in-house team",
+      "An anonymous open-source collective"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "type": "mcq",
+    "question": "What does the report say about the EU AI Act's Article 50, as of August 2, 2026?",
+    "options": [
+      "It was repealed before taking effect",
+      "It became fully in force, requiring labeling of realistic AI-generated content",
+      "It only applies to video game companies",
+      "It has no financial penalties attached"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "According to the report, which platform / brand is Lu do Magalu associated with, and what is she?",
+    "options": [
+      "A synthetic influencer created in 2003 for Brazilian retailer Magazine Luiza",
+      "A human TikTok creator based in Brazil",
+      "A robot used exclusively in physical stores",
+      "A hashtag campaign with no persona attached"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "type": "mcq",
+    "question": "According to the report, what tends to outperform mega-influencers on cost-per-conversion, even as budgets scale up?",
+    "options": [
+      "Paid search ads exclusively",
+      "Micro and nano creators",
+      "Television commercials",
+      "Print advertising"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "tf",
+    "question": "According to the report, 82% of consumers now use social platforms for product discovery and research.",
+    "correct": true
+  },
+  {
+    "type": "tf",
+    "question": "According to the report, ChatGPT reached roughly 900 million weekly users in 2026.",
+    "correct": true
+  },
+  {
+    "type": "tf",
+    "question": "According to the report, only about 4% of the roughly 50 million people in the global creator economy earn a full-time living from it.",
+    "correct": true
+  },
+  {
+    "type": "tf",
+    "question": "According to the report, US influencer marketing spend is projected to decrease from $13.7B to $10.5B by 2027.",
+    "correct": false
+  },
+  {
+    "type": "tf",
+    "question": "According to the report, a commission-based affiliate deal (like TikTok Shop's affiliate program) still requires disclosure just like a flat-fee sponsored post.",
+    "correct": true
+  },
+  {
+    "type": "tf",
+    "question": "According to the report, maximum fines under the EU AI Act for non-compliant AI providers can reach €15 million or 3% of global annual turnover.",
+    "correct": true
+  },
+  {
+    "type": "tf",
+    "question": "According to the report, 64% of consumers say they want to buy everything on one single platform.",
+    "correct": true
+  },
+  {
+    "type": "tf",
+    "question": "The report concludes that synthetic creators are likely to disappear entirely by 2028 due to regulation.",
+    "correct": false
+  },
+  {
+    "type": "slider",
+    "question": "According to the report, what percentage of brands are moving budget into creator programs in 2026?",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "correct": 74,
+    "tolerance": 5,
+    "unit": "%"
+  },
+  {
+    "type": "slider",
+    "question": "According to the report, what was the influencer-driven spend growth during Cyber Week 2025?",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "correct": 51,
+    "tolerance": 5,
+    "unit": "%"
+  },
+  {
+    "type": "slider",
+    "question": "According to the report, roughly how many million products were removed from ChatGPT's shopping results after Amazon updated its robots.txt?",
+    "min": 0,
+    "max": 1000,
+    "step": 10,
+    "correct": 600,
+    "tolerance": 50,
+    "unit": "M"
+  },
+  {
+    "type": "slider",
+    "question": "According to the report, Whatnot (a livestream-only marketplace) logged how many million dollars in sales on a single Black Friday day?",
+    "min": 0,
+    "max": 200,
+    "step": 5,
+    "correct": 75,
+    "tolerance": 10,
+    "unit": "M"
+  },
+  {
+    "type": "slider",
+    "question": "According to the report, the global creator economy is valued at roughly how many billion dollars, expected to double by 2027?",
+    "min": 0,
+    "max": 500,
+    "step": 10,
+    "correct": 250,
+    "tolerance": 20,
+    "unit": "B"
+  },
+  {
+    "type": "mcq",
+    "question": "What is the Streisand Effect, as defined in the course?",
+    "options": [
+      "A marketing technique to boost SEO rankings",
+      "A phenomenon where attempts to suppress information inadvertently amplify its public exposure",
+      "A method for calculating customer lifetime value",
+      "A legal defense strategy against defamation claims"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "Who is the Streisand Effect named after?",
+    "options": [
+      "A journalist who broke a major corporate scandal",
+      "Barbra Streisand, who tried to suppress photos of her residence in 2003",
+      "A tech CEO who deleted negative reviews",
+      "A fictional character from a marketing textbook"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "In the BodyMinute case study, who was the content creator whose parody video triggered the controversy?",
+    "options": [
+      "Laurène Lévy",
+      "Aitana López",
+      "Lu do Magalu",
+      "Jean-Christophe David"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "type": "mcq",
+    "question": "According to the case study, roughly how many views did Laurène's original 2022 parody video gain at the time?",
+    "options": [
+      "300",
+      "3,000",
+      "30,000",
+      "3,000,000"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "type": "mcq",
+    "question": "What was one of BodyMinute's early responses to the parody video, according to the case study?",
+    "options": [
+      "A public apology and dialogue with the creator",
+      "An internal directive instructing employees to report the video and claim the content was defamatory and false",
+      "A collaboration offer to the creator",
+      "No response at all"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "According to the case study, what escalation did BodyMinute reportedly pursue against Laurène in 2023-2024?",
+    "options": [
+      "Sending bailiffs to her workplace and later serving a commercial disparagement lawsuit",
+      "Offering her a paid brand partnership",
+      "Publicly thanking her for the feedback",
+      "Ignoring the situation entirely"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "type": "mcq",
+    "question": "What is identified as one of the key lessons for marketers from the BodyMinute case, according to the course?",
+    "options": [
+      "Suppress criticism as quickly and aggressively as possible",
+      "Assess potential backlash before acting, and embrace transparency instead of censorship",
+      "Always pursue legal action against any negative content",
+      "Avoid any public communication during a crisis"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "tf",
+    "question": "According to the case study, BodyMinute's aggressive legal and PR response ultimately reduced the video's reach and protected the brand's reputation.",
+    "correct": false
+  },
+  {
+    "type": "tf",
+    "question": "According to the case study, Laurène received death and rape threats sent to her professional email address.",
+    "correct": true
+  },
+  {
+    "type": "tf",
+    "question": "According to the case study, French media outlets such as 20 Minutes covered the conflict between BodyMinute and Laurène Lévy.",
+    "correct": true
+  },
+  {
+    "type": "tf",
+    "question": "According to the course, “psychological reactance” (people resisting perceived restrictions on their freedom) is identified as one mechanism behind the Streisand Effect.",
+    "correct": true
+  },
+  {
+    "type": "tf",
+    "question": "According to the case study, BodyMinute's CEO sent an internal email in December 2024 that included insults directed at Laurène.",
+    "correct": true
+  },
+  {
+    "type": "slider",
+    "question": "According to the case study, in what year did Barbra Streisand's lawsuit to remove a photo of her home result in widespread dissemination?",
+    "min": 1990,
+    "max": 2020,
+    "step": 1,
+    "correct": 2003,
+    "tolerance": 1
+  },
+  {
+    "type": "slider",
+    "question": "According to the case study, approximately how many views (in thousands) did Laurène Lévy's original parody video have at the time it was posted?",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "correct": 30,
+    "tolerance": 5,
+    "unit": "K"
+  }
+];
 
   /* ============================================================
      App state
