@@ -272,7 +272,7 @@
   const EMAILJS_SERVICE_ID  = "IAEAIX";
   const EMAILJS_TEMPLATE_ID = "template_4rrmxop";
   const TEACHER_EMAIL       = "matteo.arroyo@iae-aix.com";
-  const COURSE_LABEL        = "Digital Marketing, AI & Influence \u2014 M1"; // edit to your course name
+  const COURSE_LABEL        = "Digital Marketing, AI & Influence \u2014 M2"; // edit to your course name
 
   document.getElementById("courseLabel").textContent = COURSE_LABEL;
 
@@ -914,6 +914,235 @@
     "unit": "%"
   }
 ];
+
+  /* ============================================================
+     App state
+     ============================================================ */
+  let student = { firstName: "", lastName: "", email: "" };
+  let quiz = [];        // shuffled working copy of QUESTIONS
+  let current = 0;
+  let answers = [];     // per-question: {answered, correct}
+  let selectedIndex = null;
+  let sliderValue = null;
+  let tabSwitches = 0;
+
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  // Prepare a randomized working copy: question order shuffled,
+  // and for MCQ, option order shuffled too (tracking the correct value).
+  function buildQuiz() {
+    const shuffledQuestions = shuffle(QUESTIONS);
+    quiz = shuffledQuestions.map(q => {
+      if (q.type === "mcq") {
+        const correctText = q.options[q.correctIndex];
+        const shuffledOptions = shuffle(q.options);
+        return {
+          type: "mcq",
+          question: q.question,
+          options: shuffledOptions,
+          correctIndex: shuffledOptions.indexOf(correctText)
+        };
+      }
+      return Object.assign({}, q);
+    });
+    answers = quiz.map(() => ({ answered: false, correct: false }));
+  }
+
+  /* ============================================================
+     Anti-cheat deterrents (best effort — see note to teacher:
+     these deter casual copying but cannot block OS-level
+     screenshots or external cameras).
+     ============================================================ */
+  document.addEventListener("contextmenu", e => e.preventDefault());
+  document.addEventListener("copy", e => e.preventDefault());
+  document.addEventListener("cut", e => e.preventDefault());
+  document.addEventListener("dragstart", e => e.preventDefault());
+  document.addEventListener("paste", e => {
+    const tag = (e.target && e.target.tagName) || "";
+    if (tag !== "INPUT" && tag !== "TEXTAREA") e.preventDefault();
+  });
+  document.addEventListener("keydown", e => {
+    const blockedKeys = ["F12", "PrintScreen"];
+    const blockedCombos =
+      (e.ctrlKey || e.metaKey) && ["u", "s", "p"].includes(e.key.toLowerCase()) ||
+      (e.ctrlKey || e.metaKey) && e.shiftKey && ["i", "j", "c"].includes(e.key.toLowerCase());
+    if (blockedKeys.includes(e.key) || blockedCombos) e.preventDefault();
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden && !document.getElementById("screen-quiz").classList.contains("hidden")) {
+      tabSwitches++;
+    }
+  });
+
+  /* ============================================================
+     Screen navigation
+     ============================================================ */
+  const screenRegister = document.getElementById("screen-register");
+  const screenQuiz = document.getElementById("screen-quiz");
+  const screenResult = document.getElementById("screen-result");
+
+  function showScreen(el) {
+    [screenRegister, screenQuiz, screenResult].forEach(s => s.classList.add("hidden"));
+    el.classList.remove("hidden");
+  }
+
+  /* ---- Registration ---- */
+  document.getElementById("startBtn").addEventListener("click", () => {
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const errorEl = document.getElementById("registerError");
+
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!firstName || !lastName || !emailOk) {
+      errorEl.textContent = "Please fill in your first name, last name and a valid email address.";
+      return;
+    }
+    errorEl.textContent = "";
+    student = { firstName, lastName, email };
+
+    buildQuiz();
+    current = 0;
+    tabSwitches = 0;
+    showScreen(screenQuiz);
+    renderQuestion();
+  });
+
+  /* ---- Quiz rendering ---- */
+  const qCounter = document.getElementById("qCounter");
+  const qTypeTag = document.getElementById("qTypeTag");
+  const qText = document.getElementById("qText");
+  const qBody = document.getElementById("qBody");
+  const progressFill = document.getElementById("progressFill");
+  const nextBtn = document.getElementById("nextBtn");
+  const quizError = document.getElementById("quizError");
+
+  function renderQuestion() {
+    quizError.textContent = "";
+    selectedIndex = null;
+    sliderValue = null;
+
+    const q = quiz[current];
+    qCounter.textContent = `Question ${current + 1} / ${quiz.length}`;
+    progressFill.style.width = `${(current / quiz.length) * 100}%`;
+    qText.textContent = q.question;
+    qBody.innerHTML = "";
+
+    if (q.type === "mcq") {
+      qTypeTag.textContent = "Multiple choice";
+      const wrap = document.createElement("div");
+      wrap.className = "options";
+      q.options.forEach((opt, i) => {
+        const div = document.createElement("div");
+        div.className = "opt";
+        div.innerHTML = `<span class="bullet"></span><span>${opt}</span>`;
+        div.addEventListener("click", () => {
+          selectedIndex = i;
+          [...wrap.children].forEach(c => c.classList.remove("selected"));
+          div.classList.add("selected");
+        });
+        wrap.appendChild(div);
+      });
+      qBody.appendChild(wrap);
+
+    } else if (q.type === "tf") {
+      qTypeTag.textContent = "True / False";
+      const wrap = document.createElement("div");
+      wrap.className = "options tf-row";
+      ["True", "False"].forEach((label, i) => {
+        const div = document.createElement("div");
+        div.className = "opt";
+        div.innerHTML = `<span>${label}</span>`;
+        div.addEventListener("click", () => {
+          selectedIndex = i === 0; // true/false boolean
+          [...wrap.children].forEach(c => c.classList.remove("selected"));
+          div.classList.add("selected");
+        });
+        wrap.appendChild(div);
+      });
+      qBody.appendChild(wrap);
+
+    } else if (q.type === "slider") {
+      qTypeTag.textContent = "Slider";
+      const mid = Math.round((q.min + q.max) / 2);
+      sliderValue = mid;
+      const wrap = document.createElement("div");
+      wrap.className = "slider-wrap";
+      wrap.innerHTML = `
+        <div class="slider-value" id="sliderVal">${mid}${q.unit || ""}</div>
+        <input type="range" id="sliderInput" min="${q.min}" max="${q.max}" step="${q.step}" value="${mid}">
+        <div class="slider-bounds"><span>${q.min}${q.unit || ""}</span><span>${q.max}${q.unit || ""}</span></div>
+      `;
+      qBody.appendChild(wrap);
+      const input = wrap.querySelector("#sliderInput");
+      const label = wrap.querySelector("#sliderVal");
+      input.addEventListener("input", () => {
+        sliderValue = Number(input.value);
+        label.textContent = `${sliderValue}${q.unit || ""}`;
+      });
+    }
+
+    nextBtn.textContent = current === quiz.length - 1 ? "Submit quiz" : "Next question";
+  }
+
+  nextBtn.addEventListener("click", () => {
+    const q = quiz[current];
+
+    if (q.type === "mcq" && selectedIndex === null) {
+      quizError.textContent = "Please select an answer before continuing.";
+      return;
+    }
+    if (q.type === "tf" && selectedIndex === null) {
+      quizError.textContent = "Please select True or False before continuing.";
+      return;
+    }
+    quizError.textContent = "";
+
+    let isCorrect = false;
+    if (q.type === "mcq") isCorrect = selectedIndex === q.correctIndex;
+    else if (q.type === "tf") isCorrect = selectedIndex === q.correct;
+    else if (q.type === "slider") isCorrect = Math.abs(sliderValue - q.correct) <= q.tolerance;
+
+    answers[current] = { answered: true, correct: isCorrect };
+
+    if (current < quiz.length - 1) {
+      current++;
+      renderQuestion();
+    } else {
+      finishQuiz();
+    }
+  });
+
+  /* ---- Result + sending ---- */
+  function finishQuiz() {
+    const correctCount = answers.filter(a => a.correct).length;
+    const score20 = Math.round((correctCount / quiz.length) * 20 * 100) / 100;
+
+    document.getElementById("resultName").textContent =
+      `Thank you, ${student.firstName} ${student.lastName}. Your quiz has been recorded.`;
+    showScreen(screenResult);
+
+    sendResults(correctCount, score20);
+  }
+
+  // Full summary (includes the score) — used ONLY for the silent EmailJS
+  // call, which the student never sees.
+  function buildSummaryText(correctCount, score20) {
+    const lines = [
+      `Quiz: ${COURSE_LABEL}`,
+      `Student: ${student.firstName} ${student.lastName}`,
+      `Email: ${student.email}`,
+      `Score: ${score20} / 20  (${correctCount} / ${quiz.length} correct)`,
+      `Tab switches during quiz: ${tabSwitches}`,
+      `Submitted: ${new Date().toLocaleString()}`
+    ];
     return lines.join("\n");
   }
 
