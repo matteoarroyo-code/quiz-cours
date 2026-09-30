@@ -258,7 +258,7 @@
 
 <footer class="foot">IAE Aix-en-Provence — internal course assessment</footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" crossorigin="anonymous"></script>
 <script>
 (function () {
   "use strict";
@@ -272,7 +272,7 @@
   const EMAILJS_SERVICE_ID  = "IAEAIX";
   const EMAILJS_TEMPLATE_ID = "template_4rrmxop";
   const TEACHER_EMAIL       = "matteo.arroyo@iae-aix.com";
-  const COURSE_LABEL        = "Digital Marketing, AI & Influence \u2014 M2"; // edit to your course name
+  const COURSE_LABEL        = "Digital Marketing, AI & Influence \u2014 M1"; // edit to your course name
 
   document.getElementById("courseLabel").textContent = COURSE_LABEL;
 
@@ -411,12 +411,12 @@
   },
   {
     "type": "mcq",
-    "question": "In the “customer journey of a lead generation website” described in the course, what does the funnel primarily lead to?",
+    "question": "In the “customer journey of a lead generation website” described in the course, what does the form primarily collect?",
     "options": [
-      "Cart, Delivery, Payment",
-      "Form completion leading to prospect data (name, email, request)",
-      "Category page, Subcategory page, Product page",
-      "Authentication, Cart, Checkout"
+      "Cart, Delivery, Payment details",
+      "Prospect data: name, email, request",
+      "Category page, Subcategory page, Product page views",
+      "Authentication and account creation only"
     ],
     "correctIndex": 1
   },
@@ -439,6 +439,72 @@
       "25%",
       "50%",
       "75%"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "type": "mcq",
+    "question": "According to the course, which of these is NOT one of the three “musts of conversion”?",
+    "options": [
+      "A clear and fluid user experience (UX/UI)",
+      "Calls To Action (CTAs) always visible",
+      "Reassurances throughout navigation (secure payment, reviews)",
+      "A minimum order value with no exceptions"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "type": "mcq",
+    "question": "What is the formula the course gives for (approximate) Revenue?",
+    "options": [
+      "Traffic × conversion rate × average basket",
+      "Traffic + conversion rate + average basket",
+      "Acquisition cost ÷ number of customers",
+      "Number of sessions × bounce rate"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "type": "mcq",
+    "question": "According to the course, what is the definition of Acquisition Cost per conversion?",
+    "options": [
+      "Total acquisition costs of the period ÷ number of conversions of the period",
+      "Total revenue ÷ number of customers",
+      "Number of clicks × cost per click",
+      "Total ad spend × conversion rate"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "type": "mcq",
+    "question": "Which of these is listed among the “Digital KPIs” in the course?",
+    "options": [
+      "CAC (acquisition cost per order or customer)",
+      "Number of employees in the marketing team",
+      "Office rental cost",
+      "Number of competitors in the market"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "type": "mcq",
+    "question": "According to the course, what should you do when technology and regulatory issues keep evolving (RGPD, Cookieless, SGE)?",
+    "options": [
+      "Ignore them until they become mandatory",
+      "Surround yourself with good professionals, experts in their field",
+      "Stop all digital activity until rules stabilize",
+      "Rely exclusively on freelancers regardless of business maturity"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "type": "mcq",
+    "question": "According to the course, which partner type is recommended for a business at the “maturity, high business volume” stage?",
+    "options": [
+      "Freelancers only",
+      "Agencies only",
+      "Internalize / recruit",
+      "No partner needed at all"
     ],
     "correctIndex": 2
   },
@@ -479,84 +545,35 @@
   },
   {
     "type": "tf",
-    "question": "The course's team project requires groups of 6 students, each taking on a distinct marketing role.",
+    "question": "According to the course, repeater rate is calculated as the number of customers making more than one purchase divided by the total number of customers.",
     "correct": true
   },
   {
-    "type": "slider",
-    "question": "According to the “Digital Barometer” statistic cited in the course, how many hours per day does the average person spend in front of a screen?",
-    "min": 0,
-    "max": 12,
-    "step": 0.5,
-    "correct": 4.6,
-    "tolerance": 0.5
+    "type": "tf",
+    "question": "According to the course, the three challenges of online sales are Acquisition, Retention, and Pricing.",
+    "correct": false
   },
   {
-    "type": "slider",
-    "question": "According to the course, a satisfactory e-commerce conversion rate is typically around what percentage?",
-    "min": 0,
-    "max": 20,
-    "step": 1,
-    "correct": 3,
-    "tolerance": 1,
-    "unit": "%"
-  },
-  {
-    "type": "slider",
-    "question": "According to the course, how many months does SEO typically take before showing its first effects?",
-    "min": 0,
-    "max": 24,
-    "step": 1,
-    "correct": 6,
-    "tolerance": 1,
-    "unit": " months"
-  },
-  {
-    "type": "slider",
-    "question": "Repeater rate = customers making more than one purchase / total customers. If a store has 500 total customers and 150 repeat customers, what is the repeater rate?",
-    "min": 0,
-    "max": 100,
-    "step": 1,
-    "correct": 30,
-    "tolerance": 3,
-    "unit": "%"
-  },
-  {
-    "type": "slider",
-    "question": "Using the course's ROAS formula, if you spend 1,000€ (excl. VAT) on acquisition and generate 5,000€ of tracked revenue, what is the ROAS (as a multiple)?",
-    "min": 0,
-    "max": 20,
-    "step": 1,
-    "correct": 5,
-    "tolerance": 1,
-    "unit": "x"
-  },
-  {
-    "type": "slider",
-    "question": "If a webpage receives 2,000 sessions and records 60 conversions, what is the conversion rate (conversions / sessions)?",
-    "min": 0,
-    "max": 20,
-    "step": 1,
-    "correct": 3,
-    "tolerance": 1,
-    "unit": "%"
+    "type": "tf",
+    "question": "According to the course, SEO is described as entirely immune to changes in Google's algorithm.",
+    "correct": false
   },
   {
     "type": "mcq",
-    "question": "According to the course, what are the three waves of AI marketing evolution?",
+    "question": "According to the course, what are the first two waves of AI marketing evolution (the ones covered so far)?",
     "options": [
-      "Discovery, Growth, Maturity",
-      "The Tipping Point, Autonomy, The Invisible Era",
-      "Automation, Personalization, Regulation",
-      "Creation, Distribution, Measurement"
+      "The Tipping Point and Autonomy",
+      "Discovery and Maturity",
+      "Automation and Regulation",
+      "Creation and Distribution"
     ],
-    "correctIndex": 1
+    "correctIndex": 0
   },
   {
     "type": "mcq",
     "question": "What is the “Golden Rule of AI in Production” according to the course?",
     "options": [
-      "AI must never be used in client work",
+      "AI must never be used in client work at all",
       "AI is the brief, not the result — a human must touch the final output",
       "AI should replace all human creatives by 2027",
       "Only synthetic influencers should be used for advertising"
@@ -620,25 +637,14 @@
   },
   {
     "type": "mcq",
-    "question": "What does the course say about micro- and nano-influencers compared to mega-celebrity endorsements?",
+    "question": "According to the course, what does the evolution of influence look like, from macro to nano?",
     "options": [
-      "They drive 3x to 5x higher engagement rates",
-      "They are being phased out entirely",
-      "They cost more than celebrity endorsements",
-      "They have no measurable impact on purchase decisions"
+      "Micro- and nano-influencers drive 3x to 5x higher engagement rates than mega-celebrities",
+      "Mega-celebrity endorsements are becoming more dominant than ever",
+      "Influencer marketing is disappearing entirely",
+      "Nano-influencers only work for B2B companies"
     ],
     "correctIndex": 0
-  },
-  {
-    "type": "mcq",
-    "question": "According to the course's case study on restaurant AI-generated imagery, what was a key consumer reaction?",
-    "options": [
-      "Increased trust in the restaurant's authenticity",
-      "Complete indifference to the images",
-      "Backlash, with declining Google review scores after AI-generated food photos were used",
-      "Immediate adoption by all competitors"
-    ],
-    "correctIndex": 2
   },
   {
     "type": "mcq",
@@ -697,36 +703,25 @@
   },
   {
     "type": "mcq",
-    "question": "According to the course's case study, who resigned from Anthropic and issued a public warning about AI risk?",
+    "question": "According to the course, what does CSRD require of European brands?",
     "options": [
-      "Dario Amodei",
-      "Jacob Coxon",
-      "Sam Altman",
-      "Sundar Pichai"
+      "Documented proof for every ecological claim they make",
+      "A minimum advertising budget dedicated to sustainability",
+      "Mandatory use of AI in all sustainability communication",
+      "Nothing — CSRD applies only outside the EU"
     ],
-    "correctIndex": 1
+    "correctIndex": 0
   },
   {
     "type": "mcq",
-    "question": "Who is identified in the course as the CEO of Anthropic responding to concerns about the AI arms race?",
+    "question": "According to the course, what is the “Challenge for Brands” as AI increasingly handles pricing, efficiency, and logistics?",
     "options": [
-      "Jacob Coxon",
-      "Elon Musk",
-      "Dario Amodei",
-      "Satya Nadella"
+      "Humans still crave the identity layer: taste, surprise, genuine emotion",
+      "Brands no longer need any human input at all",
+      "AI has fully replaced the need for brand identity",
+      "Logistics has become irrelevant to marketing"
     ],
-    "correctIndex": 2
-  },
-  {
-    "type": "mcq",
-    "question": "What does the course say about “Digital Twins” of talent (e.g. models, athletes)?",
-    "options": [
-      "They are banned under EU law",
-      "Their likeness is registered and licensed, enabling infinite reusability without new photoshoots",
-      "They can only be used once per contract",
-      "They eliminate the need for any consent frameworks"
-    ],
-    "correctIndex": 1
+    "correctIndex": 0
   },
   {
     "type": "tf",
@@ -760,16 +755,6 @@
   },
   {
     "type": "tf",
-    "question": "According to the course, CSRD regulations require documented proof for ecological claims made by brands in Europe.",
-    "correct": true
-  },
-  {
-    "type": "tf",
-    "question": "The course states that AI is expected to fully replace the human “identity layer” of taste, surprise, and emotion by 2030.",
-    "correct": false
-  },
-  {
-    "type": "tf",
     "question": "According to the course, roughly 50% of Gen Z searches now begin with an image or video (2026 industry estimates).",
     "correct": true
   },
@@ -777,65 +762,6 @@
     "type": "tf",
     "question": "The course states that 65% of Google searches now end without a click (zero-click search).",
     "correct": true
-  },
-  {
-    "type": "slider",
-    "question": "According to the course (HubSpot, 2026), how many hours per week does the average marketer save using AI tools?",
-    "min": 0,
-    "max": 40,
-    "step": 0.5,
-    "correct": 10.7,
-    "tolerance": 1.5
-  },
-  {
-    "type": "slider",
-    "question": "According to the course (Adobe, 2026), what is the average production cost reduction across creative formats due to AI?",
-    "min": 0,
-    "max": 100,
-    "step": 1,
-    "correct": 42,
-    "tolerance": 5,
-    "unit": "%"
-  },
-  {
-    "type": "slider",
-    "question": "According to the course, roughly how many billion consumers interact with AI-mediated purchase journeys daily?",
-    "min": 0,
-    "max": 10,
-    "step": 0.5,
-    "correct": 2,
-    "tolerance": 0.5,
-    "unit": "B"
-  },
-  {
-    "type": "slider",
-    "question": "According to the course, generative video hyper-personalization delivers how many times higher Click-Through Rates compared to generic video creative?",
-    "min": 0,
-    "max": 20,
-    "step": 1,
-    "correct": 10,
-    "tolerance": 2,
-    "unit": "x"
-  },
-  {
-    "type": "slider",
-    "question": "According to the course, what average percentage gain in creative efficiency and time-to-market is associated with generative AI adoption?",
-    "min": 0,
-    "max": 100,
-    "step": 1,
-    "correct": 25,
-    "tolerance": 5,
-    "unit": "%"
-  },
-  {
-    "type": "slider",
-    "question": "According to the course, the AI Concierge natively blocks roughly what percentage of traditional advertising noise?",
-    "min": 0,
-    "max": 100,
-    "step": 1,
-    "correct": 99,
-    "tolerance": 2,
-    "unit": "%"
   },
   {
     "type": "mcq",
@@ -850,12 +776,12 @@
   },
   {
     "type": "mcq",
-    "question": "Which company's Shop is projected to reach $23.4B in 2026 US ecommerce sales, according to the report?",
+    "question": "Which company's Shop is projected to reach $23.4B in 2026 US ecommerce sales, according to the report — bigger than Target or Costco online?",
     "options": [
-      "Instagram Shop",
-      "TikTok Shop",
-      "Pinterest Shop",
-      "YouTube Shop"
+      "$2.34 billion",
+      "$23.4 billion",
+      "$234 billion",
+      "$2.34 trillion"
     ],
     "correctIndex": 1
   },
@@ -863,10 +789,10 @@
     "type": "mcq",
     "question": "According to the report, how do live shopping conversion rates compare to standard ecommerce checkout?",
     "options": [
-      "Live shopping converts lower, at 1-2%",
+      "Live shopping converts lower, at 1-2%, versus 5-8% for standard ecommerce",
       "Live shopping converts at 8-12%, versus 2-4% for standard ecommerce",
-      "They convert at exactly the same rate",
-      "Live shopping has no measurable conversion rate"
+      "Live shopping converts at 2-4%, versus 8-12% for standard ecommerce (the reverse)",
+      "They convert at exactly the same rate, around 5%"
     ],
     "correctIndex": 1
   },
@@ -905,28 +831,6 @@
   },
   {
     "type": "mcq",
-    "question": "What does the report identify as the main reason AI shopping agents might treat a retailer as “invisible”?",
-    "options": [
-      "The retailer's logo is not colorful enough",
-      "The retailer lacks structured, machine-readable product data (e.g. JSON-LD, schema markup)",
-      "The retailer has too many five-star reviews",
-      "The retailer only accepts credit cards"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "type": "mcq",
-    "question": "According to the report, what is “Agent Commerce Optimization”?",
-    "options": [
-      "A new baseline hygiene of making product data readable by AI shopping agents, similar to SEO for search engines",
-      "A method for optimizing warehouse robots",
-      "A legal framework for banning AI agents from retail",
-      "A synonym for influencer marketing"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "type": "mcq",
     "question": "Who created the synthetic influencer Aitana López, according to the report?",
     "options": [
       "A Barcelona agency called The Clueless, as a response to rising human influencer costs",
@@ -943,7 +847,7 @@
       "It was repealed before taking effect",
       "It became fully in force, requiring labeling of realistic AI-generated content",
       "It only applies to video game companies",
-      "It has no financial penalties attached"
+      "It takes effect later, in August 2027, not 2026"
     ],
     "correctIndex": 1
   },
@@ -951,7 +855,7 @@
     "type": "mcq",
     "question": "According to the report, which platform / brand is Lu do Magalu associated with, and what is she?",
     "options": [
-      "A synthetic influencer created in 2003 for Brazilian retailer Magazine Luiza",
+      "A synthetic virtual shopping assistant created in 2003 for Brazilian retailer Magazine Luiza",
       "A human TikTok creator based in Brazil",
       "A robot used exclusively in physical stores",
       "A hashtag campaign with no persona attached"
@@ -960,38 +864,23 @@
   },
   {
     "type": "mcq",
-    "question": "According to the report, what tends to outperform mega-influencers on cost-per-conversion, even as budgets scale up?",
+    "question": "According to the report, what does the likely outcome of the human-vs-synthetic-creator shift look like?",
     "options": [
-      "Paid search ads exclusively",
-      "Micro and nano creators",
-      "Television commercials",
-      "Print advertising"
+      "A blended roster, with humans for trust-heavy moments and AI personas for always-on, high-volume content",
+      "Total replacement of human creators by 2028",
+      "Total ban on synthetic creators across all platforms",
+      "No change at all to the creator economy"
     ],
-    "correctIndex": 1
+    "correctIndex": 0
   },
   {
     "type": "tf",
-    "question": "According to the report, 82% of consumers now use social platforms for product discovery and research.",
-    "correct": true
-  },
-  {
-    "type": "tf",
-    "question": "According to the report, ChatGPT reached roughly 900 million weekly users in 2026.",
-    "correct": true
-  },
-  {
-    "type": "tf",
-    "question": "According to the report, only about 4% of the roughly 50 million people in the global creator economy earn a full-time living from it.",
-    "correct": true
-  },
-  {
-    "type": "tf",
-    "question": "According to the report, US influencer marketing spend is projected to decrease from $13.7B to $10.5B by 2027.",
+    "question": "According to the report, 82% of consumers now use social platforms exclusively for entertainment, not for product discovery.",
     "correct": false
   },
   {
     "type": "tf",
-    "question": "According to the report, a commission-based affiliate deal (like TikTok Shop's affiliate program) still requires disclosure just like a flat-fee sponsored post.",
+    "question": "According to the report, ChatGPT reached roughly 900 million weekly users in 2026.",
     "correct": true
   },
   {
@@ -1001,7 +890,12 @@
   },
   {
     "type": "tf",
-    "question": "According to the report, 64% of consumers say they want to buy everything on one single platform.",
+    "question": "According to the report, the projected virtual/AI influencer market is expected to shrink from $46B down to $6B between 2024 and 2030.",
+    "correct": false
+  },
+  {
+    "type": "tf",
+    "question": "According to the report, a synthetic influencer's personality is licensable IP that the brand fully owns.",
     "correct": true
   },
   {
@@ -1011,405 +905,15 @@
   },
   {
     "type": "slider",
-    "question": "According to the report, what percentage of brands are moving budget into creator programs in 2026?",
+    "question": "According to the course, a satisfactory e-commerce conversion rate is typically around what percentage?",
     "min": 0,
-    "max": 100,
+    "max": 20,
     "step": 1,
-    "correct": 74,
-    "tolerance": 5,
+    "correct": 3,
+    "tolerance": 1,
     "unit": "%"
-  },
-  {
-    "type": "slider",
-    "question": "According to the report, what was the influencer-driven spend growth during Cyber Week 2025?",
-    "min": 0,
-    "max": 100,
-    "step": 1,
-    "correct": 51,
-    "tolerance": 5,
-    "unit": "%"
-  },
-  {
-    "type": "slider",
-    "question": "According to the report, roughly how many million products were removed from ChatGPT's shopping results after Amazon updated its robots.txt?",
-    "min": 0,
-    "max": 1000,
-    "step": 10,
-    "correct": 600,
-    "tolerance": 50,
-    "unit": "M"
-  },
-  {
-    "type": "slider",
-    "question": "According to the report, Whatnot (a livestream-only marketplace) logged how many million dollars in sales on a single Black Friday day?",
-    "min": 0,
-    "max": 200,
-    "step": 5,
-    "correct": 75,
-    "tolerance": 10,
-    "unit": "M"
-  },
-  {
-    "type": "slider",
-    "question": "According to the report, the global creator economy is valued at roughly how many billion dollars, expected to double by 2027?",
-    "min": 0,
-    "max": 500,
-    "step": 10,
-    "correct": 250,
-    "tolerance": 20,
-    "unit": "B"
-  },
-  {
-    "type": "mcq",
-    "question": "What is the Streisand Effect, as defined in the course?",
-    "options": [
-      "A marketing technique to boost SEO rankings",
-      "A phenomenon where attempts to suppress information inadvertently amplify its public exposure",
-      "A method for calculating customer lifetime value",
-      "A legal defense strategy against defamation claims"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "type": "mcq",
-    "question": "Who is the Streisand Effect named after?",
-    "options": [
-      "A journalist who broke a major corporate scandal",
-      "Barbra Streisand, who tried to suppress photos of her residence in 2003",
-      "A tech CEO who deleted negative reviews",
-      "A fictional character from a marketing textbook"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "type": "mcq",
-    "question": "In the BodyMinute case study, who was the content creator whose parody video triggered the controversy?",
-    "options": [
-      "Laurène Lévy",
-      "Aitana López",
-      "Lu do Magalu",
-      "Jean-Christophe David"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "type": "mcq",
-    "question": "According to the case study, roughly how many views did Laurène's original 2022 parody video gain at the time?",
-    "options": [
-      "300",
-      "3,000",
-      "30,000",
-      "3,000,000"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "type": "mcq",
-    "question": "What was one of BodyMinute's early responses to the parody video, according to the case study?",
-    "options": [
-      "A public apology and dialogue with the creator",
-      "An internal directive instructing employees to report the video and claim the content was defamatory and false",
-      "A collaboration offer to the creator",
-      "No response at all"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "type": "mcq",
-    "question": "According to the case study, what escalation did BodyMinute reportedly pursue against Laurène in 2023-2024?",
-    "options": [
-      "Sending bailiffs to her workplace and later serving a commercial disparagement lawsuit",
-      "Offering her a paid brand partnership",
-      "Publicly thanking her for the feedback",
-      "Ignoring the situation entirely"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "type": "mcq",
-    "question": "What is identified as one of the key lessons for marketers from the BodyMinute case, according to the course?",
-    "options": [
-      "Suppress criticism as quickly and aggressively as possible",
-      "Assess potential backlash before acting, and embrace transparency instead of censorship",
-      "Always pursue legal action against any negative content",
-      "Avoid any public communication during a crisis"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "type": "tf",
-    "question": "According to the case study, BodyMinute's aggressive legal and PR response ultimately reduced the video's reach and protected the brand's reputation.",
-    "correct": false
-  },
-  {
-    "type": "tf",
-    "question": "According to the case study, Laurène received death and rape threats sent to her professional email address.",
-    "correct": true
-  },
-  {
-    "type": "tf",
-    "question": "According to the case study, French media outlets such as 20 Minutes covered the conflict between BodyMinute and Laurène Lévy.",
-    "correct": true
-  },
-  {
-    "type": "tf",
-    "question": "According to the course, “psychological reactance” (people resisting perceived restrictions on their freedom) is identified as one mechanism behind the Streisand Effect.",
-    "correct": true
-  },
-  {
-    "type": "tf",
-    "question": "According to the case study, BodyMinute's CEO sent an internal email in December 2024 that included insults directed at Laurène.",
-    "correct": true
-  },
-  {
-    "type": "slider",
-    "question": "According to the case study, in what year did Barbra Streisand's lawsuit to remove a photo of her home result in widespread dissemination?",
-    "min": 1990,
-    "max": 2020,
-    "step": 1,
-    "correct": 2003,
-    "tolerance": 1
-  },
-  {
-    "type": "slider",
-    "question": "According to the case study, approximately how many views (in thousands) did Laurène Lévy's original parody video have at the time it was posted?",
-    "min": 0,
-    "max": 100,
-    "step": 1,
-    "correct": 30,
-    "tolerance": 5,
-    "unit": "K"
   }
 ];
-
-  /* ============================================================
-     App state
-     ============================================================ */
-  let student = { firstName: "", lastName: "", email: "" };
-  let quiz = [];        // shuffled working copy of QUESTIONS
-  let current = 0;
-  let answers = [];     // per-question: {answered, correct}
-  let selectedIndex = null;
-  let sliderValue = null;
-  let tabSwitches = 0;
-
-  function shuffle(arr) {
-    const a = arr.slice();
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-  }
-
-  // Prepare a randomized working copy: question order shuffled,
-  // and for MCQ, option order shuffled too (tracking the correct value).
-  function buildQuiz() {
-    const shuffledQuestions = shuffle(QUESTIONS);
-    quiz = shuffledQuestions.map(q => {
-      if (q.type === "mcq") {
-        const correctText = q.options[q.correctIndex];
-        const shuffledOptions = shuffle(q.options);
-        return {
-          type: "mcq",
-          question: q.question,
-          options: shuffledOptions,
-          correctIndex: shuffledOptions.indexOf(correctText)
-        };
-      }
-      return Object.assign({}, q);
-    });
-    answers = quiz.map(() => ({ answered: false, correct: false }));
-  }
-
-  /* ============================================================
-     Anti-cheat deterrents (best effort — see note to teacher:
-     these deter casual copying but cannot block OS-level
-     screenshots or external cameras).
-     ============================================================ */
-  document.addEventListener("contextmenu", e => e.preventDefault());
-  document.addEventListener("copy", e => e.preventDefault());
-  document.addEventListener("cut", e => e.preventDefault());
-  document.addEventListener("dragstart", e => e.preventDefault());
-  document.addEventListener("paste", e => {
-    const tag = (e.target && e.target.tagName) || "";
-    if (tag !== "INPUT" && tag !== "TEXTAREA") e.preventDefault();
-  });
-  document.addEventListener("keydown", e => {
-    const blockedKeys = ["F12", "PrintScreen"];
-    const blockedCombos =
-      (e.ctrlKey || e.metaKey) && ["u", "s", "p"].includes(e.key.toLowerCase()) ||
-      (e.ctrlKey || e.metaKey) && e.shiftKey && ["i", "j", "c"].includes(e.key.toLowerCase());
-    if (blockedKeys.includes(e.key) || blockedCombos) e.preventDefault();
-  });
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden && !document.getElementById("screen-quiz").classList.contains("hidden")) {
-      tabSwitches++;
-    }
-  });
-
-  /* ============================================================
-     Screen navigation
-     ============================================================ */
-  const screenRegister = document.getElementById("screen-register");
-  const screenQuiz = document.getElementById("screen-quiz");
-  const screenResult = document.getElementById("screen-result");
-
-  function showScreen(el) {
-    [screenRegister, screenQuiz, screenResult].forEach(s => s.classList.add("hidden"));
-    el.classList.remove("hidden");
-  }
-
-  /* ---- Registration ---- */
-  document.getElementById("startBtn").addEventListener("click", () => {
-    const firstName = document.getElementById("firstName").value.trim();
-    const lastName = document.getElementById("lastName").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const errorEl = document.getElementById("registerError");
-
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (!firstName || !lastName || !emailOk) {
-      errorEl.textContent = "Please fill in your first name, last name and a valid email address.";
-      return;
-    }
-    errorEl.textContent = "";
-    student = { firstName, lastName, email };
-
-    buildQuiz();
-    current = 0;
-    tabSwitches = 0;
-    showScreen(screenQuiz);
-    renderQuestion();
-  });
-
-  /* ---- Quiz rendering ---- */
-  const qCounter = document.getElementById("qCounter");
-  const qTypeTag = document.getElementById("qTypeTag");
-  const qText = document.getElementById("qText");
-  const qBody = document.getElementById("qBody");
-  const progressFill = document.getElementById("progressFill");
-  const nextBtn = document.getElementById("nextBtn");
-  const quizError = document.getElementById("quizError");
-
-  function renderQuestion() {
-    quizError.textContent = "";
-    selectedIndex = null;
-    sliderValue = null;
-
-    const q = quiz[current];
-    qCounter.textContent = `Question ${current + 1} / ${quiz.length}`;
-    progressFill.style.width = `${(current / quiz.length) * 100}%`;
-    qText.textContent = q.question;
-    qBody.innerHTML = "";
-
-    if (q.type === "mcq") {
-      qTypeTag.textContent = "Multiple choice";
-      const wrap = document.createElement("div");
-      wrap.className = "options";
-      q.options.forEach((opt, i) => {
-        const div = document.createElement("div");
-        div.className = "opt";
-        div.innerHTML = `<span class="bullet"></span><span>${opt}</span>`;
-        div.addEventListener("click", () => {
-          selectedIndex = i;
-          [...wrap.children].forEach(c => c.classList.remove("selected"));
-          div.classList.add("selected");
-        });
-        wrap.appendChild(div);
-      });
-      qBody.appendChild(wrap);
-
-    } else if (q.type === "tf") {
-      qTypeTag.textContent = "True / False";
-      const wrap = document.createElement("div");
-      wrap.className = "options tf-row";
-      ["True", "False"].forEach((label, i) => {
-        const div = document.createElement("div");
-        div.className = "opt";
-        div.innerHTML = `<span>${label}</span>`;
-        div.addEventListener("click", () => {
-          selectedIndex = i === 0; // true/false boolean
-          [...wrap.children].forEach(c => c.classList.remove("selected"));
-          div.classList.add("selected");
-        });
-        wrap.appendChild(div);
-      });
-      qBody.appendChild(wrap);
-
-    } else if (q.type === "slider") {
-      qTypeTag.textContent = "Slider";
-      const mid = Math.round((q.min + q.max) / 2);
-      sliderValue = mid;
-      const wrap = document.createElement("div");
-      wrap.className = "slider-wrap";
-      wrap.innerHTML = `
-        <div class="slider-value" id="sliderVal">${mid}${q.unit || ""}</div>
-        <input type="range" id="sliderInput" min="${q.min}" max="${q.max}" step="${q.step}" value="${mid}">
-        <div class="slider-bounds"><span>${q.min}${q.unit || ""}</span><span>${q.max}${q.unit || ""}</span></div>
-      `;
-      qBody.appendChild(wrap);
-      const input = wrap.querySelector("#sliderInput");
-      const label = wrap.querySelector("#sliderVal");
-      input.addEventListener("input", () => {
-        sliderValue = Number(input.value);
-        label.textContent = `${sliderValue}${q.unit || ""}`;
-      });
-    }
-
-    nextBtn.textContent = current === quiz.length - 1 ? "Submit quiz" : "Next question";
-  }
-
-  nextBtn.addEventListener("click", () => {
-    const q = quiz[current];
-
-    if (q.type === "mcq" && selectedIndex === null) {
-      quizError.textContent = "Please select an answer before continuing.";
-      return;
-    }
-    if (q.type === "tf" && selectedIndex === null) {
-      quizError.textContent = "Please select True or False before continuing.";
-      return;
-    }
-    quizError.textContent = "";
-
-    let isCorrect = false;
-    if (q.type === "mcq") isCorrect = selectedIndex === q.correctIndex;
-    else if (q.type === "tf") isCorrect = selectedIndex === q.correct;
-    else if (q.type === "slider") isCorrect = Math.abs(sliderValue - q.correct) <= q.tolerance;
-
-    answers[current] = { answered: true, correct: isCorrect };
-
-    if (current < quiz.length - 1) {
-      current++;
-      renderQuestion();
-    } else {
-      finishQuiz();
-    }
-  });
-
-  /* ---- Result + sending ---- */
-  function finishQuiz() {
-    const correctCount = answers.filter(a => a.correct).length;
-    const score20 = Math.round((correctCount / quiz.length) * 20 * 100) / 100;
-
-    document.getElementById("resultName").textContent =
-      `Thank you, ${student.firstName} ${student.lastName}. Your quiz has been recorded.`;
-    showScreen(screenResult);
-
-    sendResults(correctCount, score20);
-  }
-
-  // Full summary (includes the score) — used ONLY for the silent EmailJS
-  // call, which the student never sees.
-  function buildSummaryText(correctCount, score20) {
-    const lines = [
-      `Quiz: ${COURSE_LABEL}`,
-      `Student: ${student.firstName} ${student.lastName}`,
-      `Email: ${student.email}`,
-      `Score: ${score20} / 20  (${correctCount} / ${quiz.length} correct)`,
-      `Tab switches during quiz: ${tabSwitches}`,
-      `Submitted: ${new Date().toLocaleString()}`
-    ];
     return lines.join("\n");
   }
 
